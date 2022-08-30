@@ -612,7 +612,7 @@
     <span class="n">workspace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
     <span class="n">settings</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
 </code></pre></div></li>
-<li><code>current_user</code>: a callable that optionally takes in required permissions for the HTTP endpoint, and returns a FastAPI dependency for the currently logged in user after checking that they have permissions. The user must have all the required permissions, otherwise a <code>403</code> HTTP code is returned.
+<li><code>current_user</code>: a callable that optionally takes in required permissions for the HTTP endpoint, and returns a FastAPI dependency for the currently logged in user after checking that they have permissions. The user must have all the required permissions (if any), otherwise a <code>403</code> HTTP code is returned.
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">current_user</span><span class="p">(</span><span class="n">permissions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_current_user</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">user_has_permissions</span><span class="p">(</span><span class="n">permissions</span><span class="p">):</span>
@@ -621,14 +621,7 @@
 
     <span class="k">return</span> <span class="n">_current_user</span>
 </code></pre></div></li>
-<li><code>update_user</code>: a FastAPI dependency for a coroutine that takes in data to update.
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">update_user</span><span class="p">():</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_user</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
-        <span class="k">await</span> <span class="n">update_user_profile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">_update_user</span>
-</code></pre></div></li>
-<li><code>websocket_auth</code>: a callable that optionally takes in required permissions for the WebSocket endpoint, and returns a FastAPI dependency for a tuple consisting of the WebSocket object and the checked permissions, if the WebSocket is accepted, or <code>None</code> if the WebSocket is refused. If the WebSocket is refused, the dependency has to close it, otherwise it has to be accepted by the caller. The user must have at least one of the required permissions for the WebSocket to be accepted.
+<li><code>websocket_auth</code>: a callable that optionally takes in required permissions for the WebSocket endpoint, and returns a FastAPI dependency for a tuple consisting of the WebSocket object and the checked permissions, if the WebSocket is accepted, or <code>None</code> if the WebSocket is refused. If the WebSocket is refused, the dependency has to close it, otherwise it has to be accepted by the caller. The user must have at least one of the required permissions (if any) for the WebSocket to be accepted.
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">websocket_auth</span><span class="p">(</span><span class="n">permissions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">_websocket_auth</span><span class="p">(</span><span class="n">websocket</span><span class="p">:</span> <span class="n">WebSocket</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">WebSocket</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]]]:</span>
         <span class="n">accept_websocket</span> <span class="o">=</span> <span class="kc">False</span>
@@ -652,6 +645,13 @@
             <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">return</span> <span class="n">_websocket_auth</span>
+</code></pre></div></li>
+<li><code>update_user</code>: a FastAPI dependency for a coroutine that takes in user data to update.
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">update_user</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_user</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="k">await</span> <span class="n">update_user_profile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_update_user</span>
 </code></pre></div></li>
 </ul>
 <h2 id="fps-auth">fps-auth</h2>
