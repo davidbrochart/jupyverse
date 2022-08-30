@@ -597,13 +597,67 @@
 
   <h1>auth</h1>
 
-<p>The auth plugin has a special place because every other plugin depends on it for security reasons. It is possible to use any auth plugin as long as it follows a defined API. Jupyverse comes with two auth plugins: <a href="../../usage/multi_user/#using-fps-auth">fps-auth</a> and <a href="../../usage/multi_user/#using-fps-auth-fief">fps-auth-fief</a>.</p>
+<p>The auth plugin has a special place because every other plugin depends on it for security reasons. One and only one auth plugin must be installed. It is possible to use any auth plugin as long as it follows a defined API. Jupyverse comes with two auth plugins: <a href="../../usage/multi_user/#using-fps-auth">fps-auth</a> and <a href="../../usage/multi_user/#using-fps-auth-fief">fps-auth-fief</a>.</p>
 <h2 id="api">API</h2>
-<p>TODO</p>
+<p>An auth plugin must register the following objects in the <code>jupyverse_auth</code> entry point group:</p>
+<ul>
+<li><code>User</code>: a <a href="https://pydantic-docs.helpmanual.io">Pydantic</a> model for a user. It must have at least the following fields:
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">display_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">initials</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">color</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">avatar_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">workspace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+    <span class="n">settings</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+</code></pre></div></li>
+<li><code>current_user</code>: a callable that optionally takes in required permissions for the HTTP endpoint, and returns a FastAPI dependency for the currently logged in user after checking that they have permissions. The user must have all the required permissions, otherwise a <code>403</code> HTTP code is returned.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">current_user</span><span class="p">(</span><span class="n">permissions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_current_user</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">user_has_permissions</span><span class="p">(</span><span class="n">permissions</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">})</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_current_user</span>
+</code></pre></div></li>
+<li><code>update_user</code>: a FastAPI dependency for a coroutine that takes in data to update.
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">update_user</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_update_user</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="k">await</span> <span class="n">update_user_profile</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_update_user</span>
+</code></pre></div></li>
+<li><code>websocket_auth</code>: a callable that optionally takes in required permissions for the WebSocket endpoint, and returns a FastAPI dependency for a tuple consisting of the WebSocket object and the checked permissions, if the WebSocket is accepted, or <code>None</code> if the WebSocket is refused. If the WebSocket is refused, the dependency has to close it, otherwise it has to be accepted by the caller. The user must have at least one of the required permissions for the WebSocket to be accepted.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">websocket_auth</span><span class="p">(</span><span class="n">permissions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_websocket_auth</span><span class="p">(</span><span class="n">websocket</span><span class="p">:</span> <span class="n">WebSocket</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">WebSocket</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]]]:</span>
+        <span class="n">accept_websocket</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">checked_permissions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">SESSION_COOKIE_NAME</span> <span class="ow">in</span> <span class="n">websocket</span><span class="o">.</span><span class="n">_cookies</span><span class="p">:</span>
+            <span class="n">access_token</span> <span class="o">=</span> <span class="n">websocket</span><span class="o">.</span><span class="n">_cookies</span><span class="p">[</span><span class="n">SESSION_COOKIE_NAME</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">permissions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">accept_websocket</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">checked_permissions</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">resource</span><span class="p">,</span> <span class="n">actions</span> <span class="ow">in</span> <span class="n">permissions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">allowed</span> <span class="o">=</span> <span class="n">checked_permissions</span><span class="p">[</span><span class="n">resource</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">user_has_permission</span><span class="p">(</span><span class="n">resource</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+                            <span class="n">allowed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+                            <span class="n">accept_websocket</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">accept_websocket</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">websocket</span><span class="p">,</span> <span class="n">checked_permissions</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">WS_1008_POLICY_VIOLATION</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">_websocket_auth</span>
+</code></pre></div></li>
+</ul>
 <h2 id="fps-auth">fps-auth</h2>
-<p>TODO</p>
+<p><code>fps-auth</code> is a <a href="https://fastapi-users.github.io/fastapi-users">FastAPI-Users</a>-based solution that includes auth endpoints (registration, etc.) inside Jupyverse, as well as the user database. It is thus perfect if you want Jupyverse to completely "embed" authentication.</p>
 <h2 id="fps-auth-fief">fps-auth-fief</h2>
-<p>TODO</p>
+<p><code>fps-auth-fief</code> is a <a href="https://www.fief.dev">Fief</a>-based solution that runs separately from Jupyverse. It can be hosted in the cloud or locally.</p>
 
 
 
