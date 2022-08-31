@@ -598,17 +598,17 @@
 <p>Jupyverse can be installed to run either <a href="https://jupyterlab.readthedocs.io">JupyterLab</a> or <a href="https://github.com/jupyterlab/retrolab">RetroLab</a>.</p>
 <h2 id="with-pip">With <code>pip</code></h2>
 <p>For the JupyterLab front-end:
-<div class="highlight"><pre><span></span><code>pip install <span class="s2">&quot;jupyverse[jupyterlab]&quot;</span>
+<div class="highlight"><pre><span></span><code>pip install <span class="s2">&quot;jupyverse[jupyterlab,auth]&quot;</span>
 </code></pre></div>
 Or for the RetroLab front-end:
-<div class="highlight"><pre><span></span><code>pip install <span class="s2">&quot;jupyverse[retrolab]&quot;</span>
+<div class="highlight"><pre><span></span><code>pip install <span class="s2">&quot;jupyverse[retrolab,auth]&quot;</span>
 </code></pre></div></p>
 <h2 id="with-mamba">With <code>mamba</code></h2>
 <p>For the JupyterLab front-end:
-<div class="highlight"><pre><span></span><code>mamba install -c conda-forge jupyverse fps-jupyterlab
+<div class="highlight"><pre><span></span><code>mamba install -c conda-forge jupyverse fps-jupyterlab fps-auth
 </code></pre></div>
 Or for the RetroLab front-end:
-<div class="highlight"><pre><span></span><code>mamba install -c conda-forge jupyverse fps-retrolab
+<div class="highlight"><pre><span></span><code>mamba install -c conda-forge jupyverse fps-retrolab fps-auth
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -624,7 +624,7 @@ More on that in the <a href="../plugins/jupyterlab">plugins section</a>.</p>
 </code></pre></div></p>
 <p>Then install the needed plugins.</p>
 <ul>
-<li>With <a href="../plugins/auth/#fps-auth">fps-auth</a> plugin:
+<li>With the <a href="../plugins/auth/#fps-auth">fps-auth</a> plugin:
 <div class="highlight"><pre><span></span><code>pip install -e plugins/jupyterlab
 pip install -e plugins/login
 pip install -e plugins/auth
@@ -636,7 +636,7 @@ pip install -e plugins/nbconvert
 pip install -e plugins/yjs
 pip install -e .<span class="o">[</span>test<span class="o">]</span>
 </code></pre></div></li>
-<li>With <a href="../plugins/auth/#fps-auth-fief">fps-auth-fief</a> plugin:
+<li>With the <a href="../plugins/auth/#fps-auth-fief">fps-auth-fief</a> plugin:
 <div class="highlight"><pre><span></span><code>pip install -e plugins/jupyterlab
 pip install -e plugins/auth_fief
 pip install -e plugins/contents
