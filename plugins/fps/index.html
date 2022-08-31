@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#jupyverse-extensions" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -333,9 +338,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         FPS
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jupyverse-extensions" class="md-nav__link">
+    Jupyverse extensions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -506,6 +540,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jupyverse-extensions" class="md-nav__link">
+    Jupyverse extensions
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -521,7 +570,41 @@
   <h1>FPS</h1>
 
 <p><a href="https://github.com/jupyter-server/fps">FPS</a> is the system used in Jupyverse to extend its functionality. Actually, Jupyverse is just a collection of FPS plugins that together implement a Jupyter server.</p>
-<p>Each plugin is quite independant, except that they all depend on the auth plugin. This is because almost every endpoint has to be protected one way or another.</p>
+<p>In Jupyverse, each plugin is quite independant, except that they all depend on the auth plugin. This is because almost every endpoint has to be protected one way or another.</p>
+<h2 id="jupyverse-extensions">Jupyverse extensions</h2>
+<p>You can extend Jupyverse by creating an FPS plugin. FPS plugins can have configuration and router endpoints that must be registered in entry point groups <code>fps_config</code> and <code>fps_router</code>, respectively. In a <code>setup.cfg</code> file, that would look like the following:
+<div class="highlight"><pre><span></span><code>[options.entry_points]
+fps_config =
+    fps-myextension = fps_myextension.config
+fps_router =
+    fps-myextension = fps_myextension.routes
+</code></pre></div>
+Where <code>fps-myextension</code> is the name of your plugin (the <code>fps-</code> prefix will automatically be striped).</p>
+<p>The configuration will live in <code>fps_myextension/config.py</code>, and will look like:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fps.config</span> <span class="kn">import</span> <span class="n">PluginModel</span>
+<span class="kn">from</span> <span class="nn">fps.hooks</span> <span class="kn">import</span> <span class="n">register_config</span>
+
+<span class="k">class</span> <span class="nc">MyConfig</span><span class="p">(</span><span class="n">PluginModel</span><span class="p">):</span>
+    <span class="n">my_param1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">my_param2</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">register_config</span><span class="p">(</span><span class="n">MyConfig</span><span class="p">)</span>
+</code></pre></div>
+The router will live in <code>fps_myextension/routes.py</code>, and will look like:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span>
+<span class="kn">from</span> <span class="nn">fps.hooks</span> <span class="kn">import</span> <span class="n">register_router</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">()</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/myendpoint&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_endpoint</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Hello&quot;</span><span class="p">:</span> <span class="s2">&quot;World&quot;</span><span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">register_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+</code></pre></div>
+That's it! You just need to install this Python package and it will automatically be discovered by FPS at run-time. The <code>/myendpoint</code> endpoint will be added to Jupyverse, and you can configure your plugin e.g. at the CLI with:
+<div class="highlight"><pre><span></span><code>jupyverse --myextension.my_param2<span class="o">=</span><span class="m">3</span>
+</code></pre></div></p>
 
 
 
