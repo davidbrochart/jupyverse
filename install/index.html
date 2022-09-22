@@ -410,6 +410,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../plugins/auth_base/" class="md-nav__link">
+        fps-auth-base
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../plugins/contents/" class="md-nav__link">
         fps-contents
       </a>
@@ -642,7 +656,8 @@ More on that in the <a href="../plugins/jupyterlab">plugins section</a>.</p>
 <p>Then install the needed plugins.</p>
 <ul>
 <li>With the <a href="../plugins/auth/#fps-auth">fps-auth</a> plugin:
-<div class="highlight"><pre><span></span><code>pip install -e plugins/frontend
+<div class="highlight"><pre><span></span><code>pip install -e plugins/auth_base
+pip install -e plugins/frontend
 pip install -e plugins/lab
 pip install -e plugins/jupyterlab
 pip install -e plugins/login
@@ -655,7 +670,8 @@ pip install -e plugins/yjs
 pip install -e .<span class="o">[</span>test<span class="o">]</span>
 </code></pre></div></li>
 <li>With the <a href="../plugins/auth/#fps-auth-fief">fps-auth-fief</a> plugin:
-<div class="highlight"><pre><span></span><code>pip install -e plugins/frontend
+<div class="highlight"><pre><span></span><code>pip install -e plugins/auth_base
+pip install -e plugins/frontend
 pip install -e plugins/lab
 pip install -e plugins/jupyterlab
 pip install -e plugins/auth_fief
