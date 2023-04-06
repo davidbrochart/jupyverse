@@ -10,8 +10,14 @@
       
       
       
+      
+        <link rel="prev" href="../../install/">
+      
+      
+        <link rel="next" href="../multi_user/">
+      
       <link rel="icon" href="../../jupyter.svg">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
     
     
       
@@ -19,11 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7a7fce14.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -80,7 +85,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Jupyverse" class="md-header__button md-logo" aria-label="Jupyverse" data-md-component="logo">
       
@@ -110,7 +117,6 @@
       <form class="md-header__option" data-md-component="palette">
         
           
-          
           <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -118,7 +124,6 @@
             </label>
           
         
-          
           
           <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="black"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -159,7 +164,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -246,17 +251,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           Usage
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Usage" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Usage
@@ -272,7 +278,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
       
@@ -354,36 +360,23 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
           Plugins
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Plugins" data-md-level="1">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Plugins
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../plugins/fps/" class="md-nav__link">
-        FPS
-      </a>
-    </li>
-  
-
-            
           
             
               
@@ -406,7 +399,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/contents/" class="md-nav__link">
-        fps-contents
+        contents
       </a>
     </li>
   
@@ -420,7 +413,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/frontend/" class="md-nav__link">
-        fps-frontend
+        frontend
       </a>
     </li>
   
@@ -434,7 +427,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/lab/" class="md-nav__link">
-        fps-lab
+        lab
       </a>
     </li>
   
@@ -448,7 +441,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/jupyterlab/" class="md-nav__link">
-        fps-jupyterlab
+        jupyterlab
       </a>
     </li>
   
@@ -462,7 +455,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/retrolab/" class="md-nav__link">
-        fps-retrolab
+        retrolab
       </a>
     </li>
   
@@ -476,7 +469,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/nbconvert/" class="md-nav__link">
-        fps-nbconvert
+        nbconvert
       </a>
     </li>
   
@@ -490,7 +483,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/login/" class="md-nav__link">
-        fps-login
+        login
       </a>
     </li>
   
@@ -504,7 +497,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/kernels/" class="md-nav__link">
-        fps-kernels
+        kernels
       </a>
     </li>
   
@@ -518,7 +511,7 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/terminals/" class="md-nav__link">
-        fps-terminals
+        terminals
       </a>
     </li>
   
@@ -532,7 +525,21 @@
   
     <li class="md-nav__item">
       <a href="../../plugins/yjs/" class="md-nav__link">
-        fps-yjs
+        yjs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/resource_usage/" class="md-nav__link">
+        resource-usage
       </a>
     </li>
   
@@ -600,25 +607,25 @@
 
   <h1>Single user</h1>
 
-<p>The single user mode is usually meant to run e.g. JupyterLab as a desktop application. Under the hood, a server and a web front-end are launched, but it should be transparent to the user, who just interacts with a "web app".</p>
+<p>The single user mode is usually meant to run e.g. JupyterLab as a desktop application. Under the hood, a server and a web frontend are launched, but it should be transparent to the user, who just interacts with a "web app".</p>
 <p>Even though Jupyverse most often runs on a personal computer in this mode, it is not limited to this use case. For instance, if it runs on a network, it could be accessed by other people. It is thus important to limit access to the server, especially considering that Jupyter users can run potentially harmful code.</p>
 <p>This is why Jupyverse comes with built-in authentication. Please refer to the <a href="../../plugins/auth">auth plugins</a> section for more details. The authentication mechanisms below make use of the <a href="../../plugins/auth/#fps-auth">fps-auth</a> plugin.</p>
 <h2 id="token-authentication">Token authentication</h2>
 <p>This is the default mode when launching Jupyverse, just enter in a terminal:
-<div class="highlight"><pre><span></span><code>jupyverse
-<span class="c1"># same as: jupyverse --auth.mode=token</span>
+<div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--open-browser
+<span class="c1"># same as: jupyverse --set auth.mode=token --open-browser</span>
 </code></pre></div>
 This should open a new window in a browser, and load JupyterLab or RetroLab, depending on the front-end you chose to install (see <a href="../../install">Install</a>).</p>
 <p>If you look at the terminal, you should see among other things:
-<div class="highlight"><pre><span></span><code>[I 2022-08-30 09:37:55 auth] To access the server, copy and paste this URL:
-[I 2022-08-30 09:37:55 auth] http://127.0.0.1:8000/?token=59665677-06c6-4530-ab67-d26cd8865d8b
+<div class="highlight"><pre><span></span><code>[2023-04-05 16:22:39,137 INFO] To access the server, copy and paste this URL:
+[2023-04-05 16:22:39,137 INFO] http://127.0.0.1:8000/?token=69ce8ccee10d4388b00b3df0d9849700
 </code></pre></div>
 This is the URL the browser window was opened with, and you can see that a <code>token</code> was passed as a query parameter. When the request is made to the server, the token is checked and a cookie is set in the browser. The user is now authenticated and doesn't need to pass the token again in other requests.</p>
 <p>Other users trying to access the server will be redirected to a login page. They can enter the token there, or completely bypass this step if they paste the above URL. Sharing the token is the responsibility of the user who launched Jupyverse. This simple mechanism effectively prevents access to the server by unkown users.</p>
 <h2 id="no-authentication">No authentication</h2>
 <p>If you trust everybody who can access the server, you can launch Jupyverse with no authentication whatsoever. It can also be convenient if you run Jupyverse on your personal computer and want to open e.g. JupyterLab in multiple browsers (e.g. Firefox and Google Chrome), since they don't share cookies. This way you won't need to pass any token in the URL.</p>
 <p>Enter in a terminal:
-<div class="highlight"><pre><span></span><code>jupyverse --auth.mode<span class="o">=</span>noauth
+<div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--set<span class="w"> </span>auth.mode<span class="o">=</span>noauth<span class="w"> </span>--open-browser
 </code></pre></div></p>
 
 
@@ -632,50 +639,14 @@ This is the URL the browser window was opened with, and you can see that a <code
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
             Back to top
-          </a>
+          </button>
         
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../../install/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Install" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Install
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../multi_user/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi user" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Multi user
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -698,10 +669,10 @@ This is the URL the browser window was opened with, and you can see that a <code
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "navigation.sections", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.407015b8.min.js"></script>
       
     
   </body>
