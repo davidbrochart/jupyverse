@@ -698,12 +698,12 @@ Our Nginx server will listen at <code>http://localhost:8000</code>. This is the 
 <p>Our Jupyverse servers will run on:</p>
 <ul>
 <li><code>http://localhost:8001</code> for everything except the kernels API. This means that this server doesn't have the ability to run user code, and thus cannot be used to execute a notebook.</li>
-<li><code>http://localhost:8002</code> for the kernels API. This server only deals with executing code in a kernel. It cannot server JupyterLab's UI, for instance.</li>
+<li><code>http://localhost:8002</code> for the kernels API. This server only deals with executing code in a kernel. It cannot serve JupyterLab's UI, for instance.</li>
 </ul>
 <p>Together, these Jupyverse servers can serve a full JupyterLab API. But because they run on different machines (not exactly in this case, since ports <code>8001</code> and <code>8002</code> are on the same machine, but let's pretend), we need to make them appear as a unique server. That is the role of the reverse proxy server.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>WebSocket forwarding require extra-configuration. Here, we use a <code>regex</code> to redirect <code>/api/kernels/{kernel_id}/channels</code>, which is the WebSocket endpoint for the kernel protocol. We also set the <code>Upgrade</code> and <code>Connection</code> headers used to upgrade the connection from HTTP to WebSocket.</p>
+<p>WebSocket forwarding requires extra-configuration. Here, we use a <code>regex</code> to redirect <code>/api/kernels/{kernel_id}/channels</code>, which is the WebSocket endpoint for the kernel protocol. We also set the <code>Upgrade</code> and <code>Connection</code> headers used to upgrade the connection from HTTP to WebSocket.</p>
 </div>
 <p>We can now run our reverse proxy server. Just enter:
 <div class="highlight"><pre><span></span><code>nginx
@@ -723,7 +723,7 @@ pip<span class="w"> </span>install<span class="w"> </span>fps-lab
 pip<span class="w"> </span>install<span class="w"> </span>fps-jupyterlab
 pip<span class="w"> </span>install<span class="w"> </span>fps-login
 </code></pre></div>
-Now just launch Jupyverse on port <code>8001</code>:
+Now just launch Jupyverse at port <code>8001</code>:
 <div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--port<span class="o">=</span><span class="m">8001</span>
 </code></pre></div>
 If you open your browser at <code>http://127.0.0.1:8000</code> (the URL of the Nginx reverse proxy), you should see the JupyterLab UI you're used to. But if you look closer, you can see that there is no icon for kernels in the launcher tab. And in the terminal where you launched Jupyverse, you will see a bunch of <code>404</code> for requests at e.g. <code>GET /api/kernels</code>. This is expected, because we didn't install the kernels plugin. You can still use JupyterLab if you don't want to execute a notebook, for instance. But let's close it for now, and install the kernels plugin in another Jupyverse instance.</p>
@@ -739,7 +739,7 @@ pip<span class="w"> </span>install<span class="w"> </span>fps-noauth
 pip<span class="w"> </span>install<span class="w"> </span>fps-frontend
 pip<span class="w"> </span>install<span class="w"> </span>ipykernel
 </code></pre></div>
-Launch Juyverse on port <code>8002</code>:
+Launch Juyverse at port <code>8002</code>:
 <div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--port<span class="o">=</span><span class="m">8002</span>
 </code></pre></div>
 Now if you re-open a browser at <code>http://127.0.0.1:8000</code>, you should be able to create or open a notebook, and execute it.</p>
