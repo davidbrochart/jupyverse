@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="../terminals/">
+        <link rel="prev" href="../multi_user/">
       
       
-        <link rel="next" href="../resource_usage/">
+        <link rel="next" href="../../plugins/auth/">
       
       <link rel="icon" href="../../jupyter.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
     
     
       
-        <title>yjs - Jupyverse</title>
+        <title>Microservices - Jupyverse</title>
       
     
     
@@ -72,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#nginx-setup" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              yjs
+              Microservices
             
           </span>
         </div>
@@ -237,16 +242,18 @@
 
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -255,7 +262,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Usage
@@ -268,7 +275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/single_user/" class="md-nav__link">
+      <a href="../single_user/" class="md-nav__link">
         Single user
       </a>
     </li>
@@ -282,201 +289,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../usage/multi_user/" class="md-nav__link">
+      <a href="../multi_user/" class="md-nav__link">
         Multi user
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../usage/microservices/" class="md-nav__link">
-        Microservices
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-          Plugins
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Plugins
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../auth/" class="md-nav__link">
-        auth
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../contents/" class="md-nav__link">
-        contents
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../frontend/" class="md-nav__link">
-        frontend
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab/" class="md-nav__link">
-        lab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jupyterlab/" class="md-nav__link">
-        jupyterlab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../retrolab/" class="md-nav__link">
-        retrolab
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nbconvert/" class="md-nav__link">
-        nbconvert
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../login/" class="md-nav__link">
-        login
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kernels/" class="md-nav__link">
-        kernels
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../terminals/" class="md-nav__link">
-        terminals
       </a>
     </li>
   
@@ -496,10 +310,117 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Microservices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
-        yjs
+        Microservices
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-setup" class="md-nav__link">
+    Nginx setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jupyverse-setup" class="md-nav__link">
+    Jupyverse setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Jupyverse setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-1-everything-but-kernels" class="md-nav__link">
+    Server 1: everything but kernels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-the-kernels-api" class="md-nav__link">
+    Server 2: the kernels API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Plugins
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Plugins
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/auth/" class="md-nav__link">
+        auth
+      </a>
     </li>
   
 
@@ -511,7 +432,147 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource_usage/" class="md-nav__link">
+      <a href="../../plugins/contents/" class="md-nav__link">
+        contents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/frontend/" class="md-nav__link">
+        frontend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/lab/" class="md-nav__link">
+        lab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/jupyterlab/" class="md-nav__link">
+        jupyterlab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/retrolab/" class="md-nav__link">
+        retrolab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/nbconvert/" class="md-nav__link">
+        nbconvert
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/login/" class="md-nav__link">
+        login
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/kernels/" class="md-nav__link">
+        kernels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/terminals/" class="md-nav__link">
+        terminals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/yjs/" class="md-nav__link">
+        yjs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/resource_usage/" class="md-nav__link">
         resource-usage
       </a>
     </li>
@@ -543,6 +604,48 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nginx-setup" class="md-nav__link">
+    Nginx setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jupyverse-setup" class="md-nav__link">
+    Jupyverse setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Jupyverse setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-1-everything-but-kernels" class="md-nav__link">
+    Server 1: everything but kernels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-the-kernels-api" class="md-nav__link">
+    Server 2: the kernels API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -556,9 +659,90 @@
                   
 
 
-  <h1>yjs</h1>
+  <h1>Microservices</h1>
 
-<p><code>fps-yjs</code> implements the <a href="https://docs.yjs.dev">Yjs</a> API, i.e. everything related to collaborative editing.</p>
+<p>Jupyverse's modularity allows to run services quite independently from each other, following a microservice architecture. This can be useful when resources are provided by separate systems, or just to have a clear separation of concerns. For instance, you may want to host the contents on AWS and the kernels on Google Cloud, or on different machines in your private network. One way to achieve this is to use a reverse proxy that will forward client requests to the corresponding Jupyverse server. We will show how to do that using <a href="https://en.wikipedia.org/wiki/Nginx">Nginx</a> on a single computer with local servers. This can serve as a basis for more complicated architectures involving remote servers.</p>
+<h2 id="nginx-setup">Nginx setup</h2>
+<p>Nginx is a web server that can also be used as a reverse proxy. We will use it to forward client requests to separate Jupyverse servers, based on the request URL.</p>
+<p>First, install Nginx in its own environment:
+<div class="highlight"><pre><span></span><code>micromamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>nginx
+micromamba<span class="w"> </span>activate<span class="w"> </span>nginx
+micromamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>nginx
+</code></pre></div>
+We will just edit the default configuration file at <code>~/micromamba/envs/nginx/etc/nginx/sites.d/default-site.conf</code> with the following:
+<div class="highlight"><pre><span></span><code>server {
+    listen       8000;
+    server_name  localhost;
+
+    location / {
+        proxy_pass http://localhost:8001;
+    }
+
+    location /api/kernelspecs {
+        proxy_pass http://localhost:8002;
+    }
+    location /api/kernels {
+        proxy_pass http://localhost:8002;
+    }
+    location ~ \/api\/kernels\/.+\/channels {
+        proxy_pass http://localhost:8002;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;Upgrade&quot;;
+    }
+    location /api/sessions {
+        proxy_pass http://localhost:8002;
+    }
+}
+</code></pre></div>
+Our Nginx server will listen at <code>http://localhost:8000</code>. This is the URL the client will see, i.e. the one we enter in the browser.</p>
+<p>Our Jupyverse servers will run on:</p>
+<ul>
+<li><code>http://localhost:8001</code> for everything except the kernels API. This means that this server doesn't have the ability to run user code, and thus cannot be used to execute a notebook.</li>
+<li><code>http://localhost:8002</code> for the kernels API. This server only deals with executing code in a kernel. It cannot server JupyterLab's UI, for instance.</li>
+</ul>
+<p>Together, these Jupyverse servers can serve a full JupyterLab API. But because they run on different machines (not exactly in this case, since ports <code>8001</code> and <code>8002</code> are on the same machine, but let's pretend), we need to make them appear as a unique server. That is the role of the reverse proxy server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WebSocket forwarding require extra-configuration. Here, we use a <code>regex</code> to redirect <code>/api/kernels/{kernel_id}/channels</code>, which is the WebSocket endpoint for the kernel protocol. We also set the <code>Upgrade</code> and <code>Connection</code> headers used to upgrade the connection from HTTP to WebSocket.</p>
+</div>
+<p>We can now run our reverse proxy server. Just enter:
+<div class="highlight"><pre><span></span><code>nginx
+</code></pre></div></p>
+<h2 id="jupyverse-setup">Jupyverse setup</h2>
+<h3 id="server-1-everything-but-kernels">Server 1: everything but kernels</h3>
+<p>Let's create a new environment in a new terminal:
+<div class="highlight"><pre><span></span><code>micromamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>jupyverse1
+micromamba<span class="w"> </span>activate<span class="w"> </span>jupyverse1
+micromamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>python
+</code></pre></div>
+Since we don't want to install the fully-fledged Jupyverse server, we will install the required plugins individually:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>fps-auth
+pip<span class="w"> </span>install<span class="w"> </span>fps-contents
+pip<span class="w"> </span>install<span class="w"> </span>fps-frontend
+pip<span class="w"> </span>install<span class="w"> </span>fps-lab
+pip<span class="w"> </span>install<span class="w"> </span>fps-jupyterlab
+pip<span class="w"> </span>install<span class="w"> </span>fps-login
+</code></pre></div>
+Now just launch Jupyverse on port <code>8001</code>:
+<div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--port<span class="o">=</span><span class="m">8001</span>
+</code></pre></div>
+If you open your browser at <code>http://127.0.0.1:8000</code> (the URL of the Nginx reverse proxy), you should see the JupyterLab UI you're used to. But if you look closer, you can see that there is no icon for kernels in the launcher tab. And in the terminal where you launched Jupyverse, you will see a bunch of <code>404</code> for requests at e.g. <code>GET /api/kernels</code>. This is expected, because we didn't install the kernels plugin. You can still use JupyterLab if you don't want to execute a notebook, for instance. But let's close it for now, and install the kernels plugin in another Jupyverse instance.</p>
+<h3 id="server-2-the-kernels-api">Server 2: the kernels API</h3>
+<p>Let's create a new environment in a new terminal:
+<div class="highlight"><pre><span></span><code>micromamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>jupyverse2
+micromamba<span class="w"> </span>activate<span class="w"> </span>jupyverse2
+micromamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>python
+</code></pre></div>
+This time, we only want to install the kernels plugin. It also requires an authentication system (for the sake of simplicity we will install <code>fps-noauth</code> which gives unrestricted access) and the frontend plugin. Let's not forget to install a kernel, such as <code>ipykernel</code>:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>fps-kernels
+pip<span class="w"> </span>install<span class="w"> </span>fps-noauth
+pip<span class="w"> </span>install<span class="w"> </span>fps-frontend
+pip<span class="w"> </span>install<span class="w"> </span>ipykernel
+</code></pre></div>
+Launch Juyverse on port <code>8002</code>:
+<div class="highlight"><pre><span></span><code>jupyverse<span class="w"> </span>--port<span class="o">=</span><span class="m">8002</span>
+</code></pre></div>
+Now if you re-open a browser at <code>http://127.0.0.1:8000</code>, you should be able to create or open a notebook, and execute it.</p>
 
 
 
