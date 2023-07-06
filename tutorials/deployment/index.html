@@ -828,7 +828,7 @@ Enter "yes", then enter your passphrase. You should now be connected to your ins
 <p>Save the file, then run this command to verify the syntax of your configuration and restart NGINX:</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>nginx<span class="w"> </span>-s<span class="w"> </span>reload
 </code></pre></div>
-<p>You may have to remove the <em>server</em> section in /etc/nginx/sites-enabled/default, or simply remove this file. Now run the following command to generate certificates with the NGINX plug‑in:</p>
+<p>You may have to remove the <em>server</em> section in <code>/etc/nginx/sites-enabled/default</code>, or simply remove this file. Now run the following command to generate certificates with the NGINX plug‑in:</p>
 <div class="highlight"><pre><span></span><code><span class="gp">$ </span>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>my.jupyverse.com
 </code></pre></div>
 <p>After answering a few questions, you should be all set. If you look at <code>/etc/nginx/conf.d/my.jupyverse.com.conf</code> again, you should see that it was modified. Add the following <code>location</code> sections at the bottom:</p>
@@ -889,7 +889,7 @@ Enter "yes", then enter your passphrase. You should now be connected to your ins
         proxy_set_header Connection &quot;Upgrade&quot;;
     }">https://my.jupyverse.com/auth-callback</a>, and click "Update".</p>
 <p>Now let's click on "API Keys" on the left, then "Create API Key" on the right. Name it and click "Create". This should give you a key, copy it somewhere safe.</p>
-<p>We need to create user fields. Click on "User fields" on the left, then "Create User field" on the right. Enter each of the following fields. The name is automatically copied into Slug, the "String" type is chosen by default. Enter a default value if any, and check "Ask at profile update":</p>
+<p>We need to create user fields. Click on "User fields" on the left, then "Create User field" on the right. Enter each of the following fields. The name is automatically copied into "Slug", and the "String" type is chosen by default. Enter a default value if any, and check "Ask at profile update":</p>
 <table>
 <thead>
 <tr>
@@ -932,7 +932,7 @@ Enter "yes", then enter your passphrase. You should now be connected to your ins
 </tr>
 </tbody>
 </table>
-<p>We also need to create permissions. Click on "Access control" on the left, then "Permissions". Enter each of the following value pairs into "Name" and "Codename" respectively, click "Create Permission" on the right.</p>
+<p>We also need to create permissions. Click on "Access control" on the left, then "Permissions". Enter each of the following values into "Name" and "Codename", and click "Create Permission" on the right.</p>
 <table>
 <thead>
 <tr>
@@ -1013,7 +1013,7 @@ Enter "yes", then enter your passphrase. You should now be connected to your ins
 <span class="w">    </span>--set<span class="w"> </span>auth_fief.callback_url<span class="o">=</span>https://my.jupyverse.com/auth-callback
 </code></pre></div>
 <p>Now open a browser window at <a href="https://my.jupyverse.com">https://my.jupyverse.com</a>, and click "Sign in with GitHub". Enter your credentials and click "Sign in". If you have two-factor authentication enabled on your GitHub account, you may have to approve the request by entering a code e.g. in your mobile phone GitHub application. You should be redirected back to Fief, where you are asked to provide an email to finalize the sign up. It should be pre-filled with your GitHub email. Just click "Finalize sign up".</p>
-<p>After a while, JupyterLab should start. You should see your avatar in the top-left corner. Any other connected user should be visible in the "Collaboration" tab on the left, and if you work on the same notebook, you should see them collaborate live!</p>
+<p>After a while, JupyterLab should start. You should see your avatar in the top-right corner. Any other connected user should be visible in the "Collaboration" tab on the left, and if you work on the same notebook, you should see them collaborate live!</p>
 
 
 
